@@ -1,6 +1,3 @@
-# Spring
-
-
 
 ## **使用 Annotation 做 AOP 配置**
 
@@ -53,16 +50,17 @@ public class LogInterceptor {
 
  - 注意：  
 
- - 想把该逻辑织入到某个类的某个方法上，那个对象必须得是 Spring 管理的，而不能是自己 new 出来的。  
+    - 想把该逻辑织入到某个类的某个方法上，那个对象必须得是 Spring 管理的，而不能是自己 new 出来的。  
 
- - 织入点语法。
- - eg：
+    - 织入点语法。
+    - eg：
 
    ```java
 @Before("excution(public void com.Twilighce.dao.impl.UserDAOImpl.save(com.Twilighce.model.User))")
 public void before() {
 }
    ```
+   
 在 com.Twilighce.dao.impl.UserDAOImpl 中的 save 方法执行之前，先把后面的 before 方法加到前面。
 
  - eg：
