@@ -55,21 +55,22 @@ public class LogInterceptor {
     - 织入点语法。
     - eg：
 
-   ```java
+```java
 @Before("excution(public void com.Twilighce.dao.impl.UserDAOImpl.save(com.Twilighce.model.User))")
 public void before() {
 }
-   ```
+```
    
 在 com.Twilighce.dao.impl.UserDAOImpl 中的 save 方法执行之前，先把后面的 before 方法加到前面。
 
  - eg：
 
-   ```java
+```java
 @Before("excution(public * com.Twilighce.dao....*.*(..))")
 public void before() {
 }
-   ```
+```
+
  com.Twiighce.dao 下面，包括子包下面，任何类的任何方法，返回值可以是任何类型。
 
 ----------
