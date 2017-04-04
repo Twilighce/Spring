@@ -36,7 +36,7 @@
  - 声明这个切面的对象 logAspect，它所参考的切面类的对象是 logInterceptor，
 method = "before"；
 
- - 当找到执行时符合 $$ public * con.Twilighce.service..*.add(..) $$ 语法要求的方法的时候，它会在 before 执行之前，执行 logInterceptor  的 before 方法。
+ - 当找到执行时符合  public * con.Twilighce.service..*.add(..)  语法要求的方法的时候，它会在 before 执行之前，执行 logInterceptor  的 before 方法。
 
 ----------
 
