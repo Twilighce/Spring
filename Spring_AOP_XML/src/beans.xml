@@ -10,13 +10,13 @@
            http://www.springframework.org/schema/aop
            http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 	<context:annotation-config />
-	<context:component-scan base-package="com.bjsxt"/>
+	<context:component-scan base-package="com.Twilighce"/>
 
-	<bean id="logInterceptor" class="com.bjsxt.aop.LogInterceptor"></bean>
+	<bean id="logInterceptor" class="com.Twilighce.aop.LogInterceptor"></bean>
 	<aop:config>
 		
 		<aop:aspect id="logAspect" ref="logInterceptor">
-			<aop:before method="before" pointcut="execution(public * com.bjsxt.service..*.add(..))" />
+			<aop:before method="before" pointcut="execution(public * com.Twilighce.service..*.add(..))" />
 		</aop:aspect>
 		
 
