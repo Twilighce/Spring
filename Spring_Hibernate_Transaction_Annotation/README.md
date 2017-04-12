@@ -13,8 +13,10 @@ spring 的事务管理方式从大的方向上来讲，分为 **编程式事务*
 Spring 的声明式事务管理 是通过AOP实现的。
 大多数Spring用户选择声明式事务管理，这是最少影响应用代码的选择，因而这是和非侵入性的轻量级容器的观念是一致的。
 
-Spring配置文件 applicationContext.xml 中关于事务配置总是由三个组成部分，分别是DataSource、TransactionManager和代理机制这三部分，无论哪种配置方式，一般变化的只是代理机制这部分。
-DataSource、TransactionManager这两部分只是会根据数据访问方式有所变化：
+Spring配置文件 applicationContext.xml 中关于事务配置总是由三个组成部分，分别是DataSource、TransactionManager和代理机制这三部分，无论哪种配置方式，一般变化的只是代理机制这部分。 
+
+DataSource、TransactionManager这两部分只是会根据数据访问方式有所变化：  
+
 比如使用 hibernate 进行数据访问时，DataSource实际为SessionFactory，TransactionManager的实现为 HibernateTransactionManager。
 
 如下：
