@@ -2,8 +2,10 @@
 
 学习下 Spring 的事务管理。
 
-spring 的事务管理方式从大的方向上来讲，分为 编程式事务和声明式事务；
-编程式事务就是实现PlatformTransactionManager 接口 和 TransactionTemplate 两种方式。
+spring 的事务管理方式从大的方向上来讲，分为 **编程式事务** 和 **声明式事务**； 
+
+编程式事务就是实现 PlatformTransactionManager 接口 和 TransactionTemplate 两种方式。 
+
 这里先讲 声明式事务管理。
 
 ## 声明式事务管理
