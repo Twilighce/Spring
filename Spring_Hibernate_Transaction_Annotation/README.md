@@ -39,5 +39,15 @@ DataSource、TransactionManager这两部分只是会根据数据访问方式有�
 
 ### @Transaction
 
+在一个方法上加事务，加上：
 
+>@Transactional
+
+使用的时候，新加一个 namespace：
+
+>xmlns:tx="http://www.springframework.org/schema/tx"
+
+同时，在 xml 文件中声明，现在是 annotation 驱动的 Transaction 管理：
+
+><tx:annotation-driven transaction-manager="txManager"/>
 
