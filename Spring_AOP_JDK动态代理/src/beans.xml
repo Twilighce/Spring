@@ -1,8 +1,8 @@
 <beans>
-	<bean id="u" class="com.bjsxt.dao.impl.UserDAOImpl" >
+	<bean id="u" class="com.Twilighce.dao.impl.UserDAOImpl" >
 		
 	</bean>
-	<bean id="userService" class="com.bjsxt.service.UserService" >
+	<bean id="userService" class="com.Twilighce.service.UserService" >
 		<property name="userDAO" bean="u"/>
 	</bean>
 	

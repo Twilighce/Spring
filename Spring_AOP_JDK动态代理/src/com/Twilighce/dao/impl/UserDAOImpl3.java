@@ -1,8 +1,8 @@
-package com.bjsxt.dao.impl;
+package com.Twilighce.dao.impl;
 
-import com.bjsxt.aop.LogInterceptor;
-import com.bjsxt.dao.UserDAO;
-import com.bjsxt.model.User;
+import com.Twilighce.aop.LogInterceptor;
+import com.Twilighce.dao.UserDAO;
+import com.Twilighce.model.User;
 
 public class UserDAOImpl3 implements UserDAO {
 	

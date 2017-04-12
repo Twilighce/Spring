@@ -30,6 +30,45 @@
 ---
  
 这里给出一个JDK 动态代理的例子。  
-具体的实现逻辑可参看代码注释。
 
+
+将横切代码放到 InvocationHandler 中。
+
+```java
+public class LogInterceptor implements InvocationHandler {
+	
+	// target 为目标的业务类
+	private Object target;
+	
+	public Object getTarget() {
+		return target;
+	}
+
+	public void setTarget(Object target) {
+		this.target = target;
+	}
+
+	public void beforeMethod(Method m) {
+		
+		System.out.println(m.getName() + " start");
+	}
+
+	// InvocationHandler接口定义了 invoke(Object proxy, Method method, Object[] args)方法，将横切代码和目标业务类代码编织到一起。
+	// proxy是代理实例，一般不会用到；
+	// method是代理实例上的方法，通过它可以发起对目标类的反射调用；
+	// args是通过代理类传入的方法参数，在反射调用时使用。
+	public Object invoke(Object proxy, Method m, Object[] args)
+			throws Throwable {
+		beforeMethod(m);
+		m.invoke(target, args); //通过反射方法调用目标业务类的业务方法
+		return null;
+	}
+} 
+```
+
+解释下：
+
+首先，实现 InvocationHandler 接口，该接口定义了一个 invoke(Object proxy, Method method, Object[] args) 的方法，proxy是代理实例，一般不会用到；method是代理实例上的方法，通过它可以发起对目标类的反射调用；args是通过代理类传入的方法参数，在反射调用时使用。
+    
+此外，我们通过target传入真实的目标对象，在接口方法 invoke(Object proxy, Method method, Object[] args) 里，将目标类实例传给 method.invoke() 方法，通过反射调用目标类方法。
 
