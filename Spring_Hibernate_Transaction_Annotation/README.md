@@ -35,9 +35,9 @@ DataSource、TransactionManager这两部分只是会根据数据访问方式有�
 
 所以，事务应当加在 Service 层的方法里面。
 
-那么事务该怎么加呢？
+那么，事务该怎么加呢？
 
-### @Transaction
+## @Transaction
 
 在一个方法上加事务，加上：
 
@@ -50,4 +50,17 @@ DataSource、TransactionManager这两部分只是会根据数据访问方式有�
 同时，在 xml 文件中声明，现在是 annotation 驱动的 Transaction 管理：
 
 ><tx:annotation-driven transaction-manager="txManager"/>
+
+来看 HibernateTransactionManager：
+
+```java
+<bean id="txManager"
+	class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+	<property name="sessionFactory" ref="sessionFactory" />
+</bean>
+```
+HibernateTransactionManager 这个类，类似于一个 Aspect，在方法前后加点东西。 这里应用了 AOP。
+让它通过数据库的连接来管理事务，要告诉它数据库的连接是谁，就要把 sessionFactory 注入，sessionFactory 里，又被注入了 dataSource。
+TransactionManager 在管理事务时，需要 Hibernate 的一些配置，这些配置 sessionFactory 中都有。
+
 
