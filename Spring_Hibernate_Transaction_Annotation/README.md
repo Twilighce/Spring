@@ -39,7 +39,7 @@ DataSource、TransactionManager这两部分只是会根据数据访问方式有�
 
 ## @Transaction
 
-在一个方法上加事务，加上：
+在一个方法上加事务，加上注解：
 
 >@Transactional
 
@@ -54,6 +54,7 @@ DataSource、TransactionManager这两部分只是会根据数据访问方式有�
 来看 HibernateTransactionManager：
 
 ```java
+<!-- 定义事务管理器（声明式的事务） -->
 <bean id="txManager"
 	class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 	<property name="sessionFactory" ref="sessionFactory" />
