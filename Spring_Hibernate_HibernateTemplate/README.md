@@ -1,5 +1,7 @@
 # Spring  
 
+## HibernateTemplate
+
 Spring事务的本质其实就是数据库对事务的支持。没有数据库的事务支持，spring是无法提供事务功能的。
 
 对于纯JDBC操作数据库，想要用到事务，可以按照以下步骤进行：
