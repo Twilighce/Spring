@@ -68,4 +68,14 @@ HibernateTransactionManager 这个类，类似于一个 Aspect，在方法前后
 让它通过数据库的连接来管理事务，要告诉它数据库的连接是谁，就要把 sessionFactory 注入，sessionFactory 里，又被注入了 dataSource。
 TransactionManager 在管理事务时，需要 Hibernate 的一些配置，这些配置 sessionFactory 中都有。
 
+## 什么时候回滚？
+
+分析下什么时候 rollback？
+
+1. 运行期异常。非运行期异常不会 rollbak；
+2. 必须 uncheck （没有 catch）；
+3. 不管什么异常，只要 catch 了，Spring 就会放弃管理；
+4. propagation_required；
+5. read_only。
+
 
