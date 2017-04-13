@@ -58,22 +58,20 @@ MyHibernateTemplate：
 ```
 public class MyHibernateTemplate {
 
-    public void executeWithNativeSession(MyHibernateCallback callback) {
+    //传入接口的对象
+    public void executeWithNativeSession(MyHibernateCallback callback) {
 	Session s = null;
 	try {
 	    s = getSession();
             s.beginTransaction();
 		
-	    callback.doInHibernate(s);
+	    // 调用 callback 接口中的方法
+	    callback.doInHibernate(s);
 			
 	    s.getTransaction().commit();
-	} 
-	    
-	catch (Exception e) {
+	} catch (Exception e) {
 	    s.getTransaction().rollback();
-	} 
-	    
-	finally {
+	} finally {
             //...
 	}
     }
@@ -84,8 +82,10 @@ public class MyHibernateTemplate {
     }
 	
     public void save(final Object o) {	
-        new MyHibernateTemplate().executeWithNativeSession(new MyHibernateCallback() {
-	    public void doInHibernate(Session s) {
+        // 匿名类
+        new MyHibernateTemplate().executeWithNativeSession(new MyHibernateCallback() {
+	    // 实现接口中的方法
+	    public void doInHibernate(Session s) {
 	        s.save(o);		
 	    }
 	});
@@ -93,6 +93,14 @@ public class MyHibernateTemplate {
 }
 ```
 
+中间动作交由用户决定，向外提供一个接口。
+MyHibernateCallbak：
 
+```
+public interface MyHibernateCallback {
+    // 将 session 交付作为参数
+    public void doInHibernate(Session s);
+}
+```
 
 
