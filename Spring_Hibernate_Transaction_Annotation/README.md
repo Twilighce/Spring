@@ -80,8 +80,10 @@ TransactionManager 在管理事务时，需要 Hibernate 的一些配置，这�
 
 4. propagation_required；
   
->如果ServiceB.methodB() 的事务级别定义为 PROPAGATION_REQUIRED，那么执行 ServiceA.methodA() 的时候spring已经起了事务，这时调用 ServiceB.methodB()，ServiceB.methodB() 看到自己已经运行在 ServiceA.methodA() 的事务内部，就不再起新的事务。
->假如 ServiceB.methodB() 运行的时候发现自己没有在事务中，他就会为自己分配一个事务。
+>如果ServiceB.methodB() 的事务级别定义为 PROPAGATION_REQUIRED，那么执行 ServiceA.methodA() 的时候spring已经起了事务，这时调用 ServiceB.methodB()，ServiceB.methodB() 看到自己已经运行在 ServiceA.methodA() 的事务内部，就不再起新的事务。  
+
+>假如 ServiceB.methodB() 运行的时候发现自己没有在事务中，他就会为自己分配一个事务。  
+
 >这样，在 ServiceA.methodA() 或者在 ServiceB.methodB() 内的任何地方出现异常，事务都会被回滚。
   
 5. read_only。
